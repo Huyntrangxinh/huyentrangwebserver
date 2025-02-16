@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .register-container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .register-title {
+      color: #8B5E3C;
+      font-weight: bold;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #333;
+    }
+    .btn-primary {
+      background-color: #8B5E3C;
+      border-color: #8B5E3C;
+      font-weight: bold;
+    }
+    .btn-primary:hover {
+      background-color: #754929;
+      border-color: #754929;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="register-container">
+    <h2 class="register-title">Create an Account</h2>
+    <form method="POST" action="/register">
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email" 
+          required>
+      </div>
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input 
+          type="password" 
+          class="form-control" 
+          id="password" 
+          name="password" 
+          placeholder="Create a password" 
+          required>
+      </div>
+      <!-- Role -->
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <select class="form-select" id="role" name="role" required>
+          <option value="staff">Staff</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <!-- Register Button -->
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+    </form>
+    <!-- Link to Login -->
+    <div class="text-center mt-3">
+      <p>Already have an account? <a href="{{ url_for('login') }}" style="color: #8B5E3C; font-weight: bold;">Login here</a></p>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

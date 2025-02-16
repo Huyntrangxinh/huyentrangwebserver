@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}
+  Our Menu
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center my-4" style="color: #8B5E3C; font-weight: bold; font-size: 2.5rem;">🍽️ Our Menu</h1>
+
+<!-- SEARCH BAR CẢI TIẾN -->
+<div class="container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="search-container">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="form-control search-input" 
+          placeholder="Search for items..." 
+          onkeyup="searchItems()"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Danh sách món -->
+<div class="row" id="menuContainer">
+  {% for item in items %}
+  <div class="col-md-4 mb-4 menu-item">
+    <div class="card shadow-sm h-100" style="border: 2px solid #8B5E3C; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+
+      <!-- Hình ảnh món -->
+      <div class="image-container">
+        {% if item.image %}
+          <img src="{{ url_for('static', filename='uploads/' ~ item.image) }}" 
+               alt="{{ item.name }}">
+        {% else %}
+          <span class="text-muted">No image</span>
+        {% endif %}
+      </div>
+
+      <!-- Thông tin món -->
+      <div class="card-body text-center" style="padding: 20px;">
+        <h5 class="card-title" style="font-weight: bold; color: #333; font-size: 1.3rem;">
+          {{ item.name }}
+        </h5>
+        <p class="card-text text-muted" style="font-size: 0.95rem;">{{ item.description or "No description available." }}</p>
+      </div>
+
+      <!-- Giá và nút thêm vào giỏ hàng -->
+      <div class="card-footer d-flex justify-content-between align-items-center" style="background-color: #fdfbf5; padding: 15px;">
+        <strong style="font-size: 1.2rem; font-weight: bold; color: #8B5E3C;">${{ "%.2f"|format(item.price) }}</strong>
+        <form action="{{ url_for('add_to_cart', item_id=item.id) }}" method="POST" style="display: inline;">
+          <input type="hidden" name="quantity" value="1"/>
+          <button type="submit" class="btn shadow-sm" style="background-color: #8B5E3C; color: #fff; font-weight: bold; border-radius: 8px;">
+            <i class="bi bi-cart-plus"></i> Add to Cart
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- SEARCH SCRIPT -->
+<script>
+  function searchItems() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let items = document.getElementsByClassName("menu-item");
+
+    for (let i = 0; i < items.length; i++) {
+      let title = items[i].getElementsByClassName("card-title")[0].innerText.toLowerCase();
+      items[i].style.display = title.includes(input) ? "" : "none";
+    }
+  }
+</script>
+
+<!-- STYLE CẢI TIẾN -->
+<style>
+  /* Cải tiến ô tìm kiếm */
+  .search-container {
+    position: relative;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid #8B5E3C;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .search-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #C98C63;
+    box-shadow: 0 4px 8px rgba(139, 94, 60, 0.3);
+  }
+
+  .search-container::before {
+    content: '\1F50D';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8B5E3C;
+  }
+
+  /* Hiệu ứng ảnh món */
+  .image-container {
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 2px solid #8B5E3C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f3eb;
+  }
+
+  .image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .image-container:hover img {
+    transform: scale(1.1);
+  }
+
+  /* Hiệu ứng hover cho card */
+  .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+{% endblock %}

@@ -1,0 +1,198 @@
+/* Thêm đường viền và màu nền cho bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+body {
+    background-color: #f8f9fa; /* Màu nền cho toàn bộ trang */
+}
+
+table {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    color: black; /* Đặt màu chữ thành đen */
+}
+
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    color: black; /* Đặt màu chữ mặc định thành đen */
+}
+
+/* Thay đổi màu tiêu đề */
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+/* Hiệu ứng hover cho hàng */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Thay đổi màu trạng thái */
+.status-pending {
+    background-color: #ff6a00; /* Vàng */
+    color: black; /* Màu chữ đen */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status-processing {
+    background-color: #00CCFF; /* Xanh dương nhạt */
+    color: black; /* Màu chữ đen */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status-completed {
+    background-color: #28A745; /* Xanh lá */
+    color: black; /* Màu chữ đen */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.bg-warning {
+    background-color: #ff5454 !important; /* Màu vàng tùy chỉnh */
+}
+.bg-info{
+    background-color: #f2c40e !important; /* Màu vàng tùy chỉnh */
+}
+.bg-success{
+    background-color: #24B04C !important; /* Màu vàng tùy chỉnh */
+}
+/* Button cập nhật */
+button {
+    background-color: #007BFF; /* Xanh dương */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+thead th {
+    background-color: #343a40 !important; /* Màu nền xám đậm */
+    color: white !important; /* Chữ màu trắng */
+}
+button:hover {
+    background-color: #0056b3;
+}
+/* Đặt màu nền riêng cho bảng list_order */
+.list_order {
+    background-color: #ffffff;
+}
+
+/* Tăng chiều rộng cho cột Action trong bảng list_order */
+.list_order th:last-child, .list_order td:last-child {
+    width: 180px;
+    text-align: center;
+}
+
+/* Tùy chỉnh thêm cột đầu tiên */
+.list_order th:first-child, .list_order td:first-child {
+    font-weight: bold;
+    color: black;
+}
+/* CSS chung cho list_menu */
+.list_menu {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    background-color: #fdfdfd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề bảng list_menu */
+.list_menu thead th {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+}
+
+/* Nội dung bảng list_menu */
+.list_menu td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Chỉnh cột đầu tiên (#) trong list_menu */
+.list_menu th:first-child,
+.list_menu td:first-child {
+    color: black; /* Đặt màu đen cho chữ */
+    font-weight: bold; /* Làm chữ đậm */
+    text-align: center; /* Căn giữa */
+}
+.list_menu td:last-child {
+    text-align: center; /* Căn giữa các nút Edit và Remove */
+}
+/* Hình ảnh trong bảng list_menu */
+.list_menu td img {
+    display: block;
+    margin: 0 auto;
+    max-width: 80px;
+    border-radius: 8px;
+}
+/* Tăng chiều rộng cho cột "Action" */
+/* Tăng chiều rộng cho cột "Action" */
+.list_order th:last-child,
+.list_order td:last-child {
+    width: 300px; /* Đặt chiều rộng lớn hơn */
+    text-align: center; /* Căn giữa nội dung */
+}
+
+/* Định dạng nút "Cập nhật" */
+.list_order .btn-primary {
+    display: inline-block; /* Đảm bảo nút nằm gọn trong cột */
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    width: 100px; /* Đảm bảo nút không quá lớn */
+}
+
+/* Định dạng dropdown */
+.list_order select {
+    width: 160px; /* Tăng chiều rộng của dropdown */
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Hiệu ứng hover cho bảng list_menu */
+.list_menu tr:hover {
+    background-color: #f1f1f1;
+}
+
+.cart-image-container {
+    width: 80px; /* Chiều rộng khung ảnh */
+    height: 80px; /* Chiều cao khung ảnh */
+    overflow: hidden; /* Ẩn phần ảnh vượt khung */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-left: 10px; /* Dịch sang phải một chút */
+    background-color: #f8f3eb; /* Nền cho khung ảnh */
+    border-radius: 4px; /* Bo góc cho khung ảnh */
+  }
+  
+  .cart-image {
+    width: 100%; /* Ảnh vừa khung */
+    height: 100%; /* Ảnh vừa khung */
+    object-fit: cover; /* Cắt ảnh để vừa khung */
+    border-radius: 4px; /* Bo góc cho ảnh */
+  }
+  

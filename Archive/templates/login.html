@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}
+  Admin Login
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+  <div class="col-md-5 col-lg-4">
+    <!-- Card Container -->
+    <div class="card shadow-sm border-0 rounded">
+      <div class="card-body p-4">
+        <!-- Header -->
+        <h2 class="text-center mb-4" style="color: #8B5E3C; font-weight: bold;">🔒 Admin Login</h2>
+        
+        <!-- Login Form -->
+        <form method="POST" action="{{ url_for('login') }}">
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label" style="font-weight: bold; color: #333;">Email</label>
+            <input 
+              type="email" 
+              class="form-control shadow-sm" 
+              id="email" 
+              name="email" 
+              placeholder="Enter your email" 
+              required
+              style="border: 1px solid #8B5E3C;">
+          </div>
+          
+          <!-- Password Field -->
+          <div class="mb-3">
+            <label for="password" class="form-label" style="font-weight: bold; color: #333;">Password</label>
+            <input 
+              type="password" 
+              class="form-control shadow-sm" 
+              id="password" 
+              name="password" 
+              placeholder="Enter your password" 
+              required
+              style="border: 1px solid #8B5E3C;">
+          </div>
+          
+          <!-- Login Button -->
+          <button type="submit" class="btn w-100 shadow-sm"
+                  style="background-color: #8B5E3C; color: #fff; font-weight: bold; border-radius: 8px;">
+            Login
+          </button>
+        </form>
+        
+        <!-- Registration Link -->
+        <div class="text-center mt-3">
+          <p style="color: #555;">Don't have an account? 
+            <a href="{{ url_for('register') }}" style="color: #8B5E3C; font-weight: bold;">Register here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

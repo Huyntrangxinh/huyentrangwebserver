@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+  Order Success
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+  <div class="text-center">
+    <!-- Icon Success -->
+    <div class="mb-4">
+      <i class="bi bi-check-circle-fill" style="font-size: 4rem; color: #28A745;"></i>
+    </div>
+
+    <!-- Title -->
+    <h1 class="mb-3" style="color: #8B5E3C; font-weight: bold; font-size: 2.5rem;">Order Success</h1>
+
+    <!-- Order Code -->
+    <p class="mb-4" style="font-size: 1.2rem; color: #555;">
+      Your order code: <strong style="color: #8B5E3C;">{{ order_code }}</strong>
+    </p>
+
+    <!-- Thank You Message -->
+    <p class="mb-4" style="font-size: 1rem; color: #777;">
+      Thank you for your purchase! We hope to serve you again soon.
+    </p>
+
+    <!-- Back to Menu Button -->
+    <a href="/" class="btn btn-lg shadow" style="background-color: #8B5E3C; color: #fff; font-weight: bold; border-radius: 8px;">
+      <i class="bi bi-arrow-left-circle"></i> Back to Menu
+    </a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!-- order_form.html -->
+{% extends "base.html" %}
+{% block title %}
+  Create New Order
+{% endblock %}
+
+{% block content %}
+<h1>Create New Order</h1>
+<form method="POST" action="{{ url_for('store_order') }}">
+  <div class="mb-3">
+    <label for="order_code" class="form-label">Order Code</label>
+    <input type="text" class="form-control" name="order_code" required>
+  </div>
+  <div class="mb-3">
+    <label for="items" class="form-label">Items</label>
+    <textarea class="form-control" name="items"></textarea>
+    <!-- Bạn có thể thay thế bằng cách render danh sách món ăn để chọn -->
+  </div>
+  <div class="mb-3">
+    <label for="total_price" class="form-label">Total Price</label>
+    <input type="number" step="0.01" class="form-control" name="total_price" required>
+  </div>
+  <div class="mb-3">
+    <label for="note" class="form-label">Note</label>
+    <textarea class="form-control" name="note"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Save</button>
+  <a href="{{ url_for('show_order_list') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

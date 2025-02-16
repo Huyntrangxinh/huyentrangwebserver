@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Login Error
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="col-md-6">
+    <div class="card shadow-sm border-0 rounded">
+      <div class="card-body p-4">
+        <!-- Thông báo lỗi -->
+        <div class="alert alert-danger text-center" role="alert">
+          <i class="bi bi-exclamation-triangle-fill"></i> Sai email hoặc mật khẩu!
+        </div>
+
+        <!-- Nút quay lại -->
+        <div class="text-center mt-4">
+          <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg shadow" style="background-color: #8B5E3C; color: #fff; font-weight: bold;">
+            <i class="bi bi-arrow-left-circle"></i> Quay lại trang đăng nhập
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Edit Menu
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="text-center mb-4" style="color: #8B5E3C; font-weight: bold; font-size: 2.5rem;">Edit Menu Item</h1>
+    <form action="{{ url_for('update_menu', item_id=item.id) }}" method="POST" enctype="multipart/form-data">
+      <!-- Name -->
+      <div class="mb-4">
+        <label for="name" class="form-label" style="color: #8B5E3C; font-weight: bold;">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ item.name }}" required>
+      </div>
+
+      <!-- Price -->
+      <div class="mb-4">
+        <label for="price" class="form-label" style="color: #8B5E3C; font-weight: bold;">Price</label>
+        <input type="number" class="form-control" id="price" name="price" step="0.01" value="{{ item.price }}" required>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-4">
+        <label for="description" class="form-label" style="color: #8B5E3C; font-weight: bold;">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="4" required>{{ item.description }}</textarea>
+      </div>
+
+      <!-- Image Upload -->
+      <div class="mb-4">
+        <label for="image" class="form-label" style="color: #8B5E3C; font-weight: bold;">Upload Image</label>
+        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+      </div>
+
+      <!-- Image URL -->
+      <div class="mb-4">
+        <label for="image_url" class="form-label" style="color: #8B5E3C; font-weight: bold;">Image URL</label>
+        <input type="url" class="form-control" id="image_url" name="image_url" placeholder="Paste image URL here...">
+      </div>
+
+      <!-- Image Preview -->
+      <div class="mb-4">
+        <label class="form-label" style="color: #8B5E3C; font-weight: bold;">Image Preview</label>
+        <div id="image_preview" style="border: 2px solid #8B5E3C; height: 250px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+          {% if item.image %}
+            <img src="{{ url_for('static', filename='uploads/' ~ item.image) }}" id="preview_image" style="max-height: 100%; max-width: 100%; border-radius: 8px;" alt="Image preview">
+          {% else %}
+            <span class="text-muted" id="placeholder_text">No image selected</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100 py-2" style="background-color: #8B5E3C; border-color: #8B5E3C; font-weight: bold; font-size: 1.2rem; border-radius: 8px;">Update</button>
+    </form>
+  </div>
+
+  <!-- JavaScript for Image Preview -->
+  <script>
+    document.getElementById('image_url').addEventListener('input', function (event) {
+      const url = event.target.value;
+      const previewImage = document.getElementById('preview_image');
+      const placeholderText = document.getElementById('placeholder_text');
+
+      if (url) {
+        previewImage.src = url;
+        previewImage.style.display = 'block';
+        placeholderText.style.display = 'none';
+      } else {
+        previewImage.style.display = 'none';
+        placeholderText.style.display = 'block';
+      }
+    });
+
+    document.getElementById('image').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      const previewImage = document.getElementById('preview_image');
+      const placeholderText = document.getElementById('placeholder_text');
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block';
+          placeholderText.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewImage.style.display = 'none';
+        placeholderText.style.display = 'block';
+      }
+    });
+  </script>
+{% endblock %}
